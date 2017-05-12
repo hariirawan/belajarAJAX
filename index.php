@@ -2,36 +2,47 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>CRUD ajax</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body >
 <div class="container-fluid">
 	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1 navbar-fixed-top">
+			<nav class="navbar navbar-inverse ">
+			  <div class="container-fluid">
+			    <div class="navbar-header">
+			      <a class="navbar-brand" href="#">
+			        <i class="glyphicon glyphicon-record"></i>&nbsp;Sistem Simpel
+			      </a>
+			    </div>
+			  </div>
+			</nav>
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
 		<div class="col-sm-10 col-sm-offset-1">			
 			<div class="jumbotron text-center">
 				<img src="img/irawan.jpg" alt="" class="img-circle"><h1>Hari Irawan</h1>
-				<p>Belajar Bareng Bahasa Pemrograman Asynchronous JavaScript</p>
+				<p><b class="text1">JQUERY</b>|| <b class="text2">AJAX</b> || <b class="text3">BOOTSTRAP</b> || <b class="text4">PHP 7 VESI OOP</b></p>
 			</div>
 		</div>
 	</div>
 	<div class="navSearch">
 		<div class="row">
 			<div class="col-sm-10 col-sm-offset-1 styleNav">
-				<div class="col-sm-3 ">
-					<button class="btn btn-info" data-toggle="modal" data-target="#crud">Tambah Data</button>
-				</div>
-				<div class="col-sm-7 col-sm-offset-2">
-					<form>
-						<div class="input-group">
-							<input type="text" placeholder="Search For.." class="form-control" id="cari">
-							<span class="input-group-btn">
-								<input class="btn btn-warning" type="reset">Reset !</input>
-							</span>
-						</div>
-					</form>
-				</div>
+				<button type="button" class="btn btn-success navbar-btn " data-toggle="modal" data-target="#crud"><i class="glyphicon glyphicon-plus"></i>&nbsp;Tambah Data</button>
+				<form class="navbar-form navbar-right " role="search">
+				  	<div class="input-group">
+					    <input type="text" placeholder="Search For.." class="form-control" id="cari">
+						<span class="input-group-btn">
+							<input class="btn btn-warning" type="reset">Reset !</input>
+						</span>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -91,7 +102,6 @@
 	<div class="row">
 		<div class="col-sm-10 col-sm-offset-1 footer">
 			<h5>&copy;Copyright : By Hari Irawan</h5>
-			<a href="http://maeh-nulis.blogspot.com" class="btn btn-danger btn-sm">Bologer.com</a>
 		</div>
 	</div>
 </div>
