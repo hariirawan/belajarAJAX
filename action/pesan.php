@@ -9,8 +9,12 @@ if ($page == 'add') {
 
 	$sqli = $mysqli->prepare("INSERT INTO tbl_pesan(nama,email,kategori,pesan) VALUES (?, ?, ?, ?)");
 	$sqli->bind_param('ssss',$nama,$email,$kategori,$pesan);
-	$sqli->execute();
-
+	if ($sqli->execute()) {
+		echo "true";
+	}else{
+		echo "false";
+	}
+	$mysqli->close();
 /*
 =============
 fungsi edit
@@ -78,19 +82,17 @@ fungsi edit
 			<td><?php echo $data["pesan"]; ?></td>
 			<td>
 				<button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit-<?php echo $data["id_pesan"]; ?>">Edit</button>
-				<button class="btn btn-danger btn-sm " onclick="deleteData(<?php echo $data["id_pesan"]; ?>)">Delete</button>
+				<button class="btn btn-danger btn-sm btn-hapus" id="<?php echo $data["id_pesan"]; ?>">Delete</button>
 
 				<!--Modal Edit -->
 
-				<div class="modal fade" id="edit-<?php echo $data["id_pesan"]; ?>" tabindex="-1" role="dialog">
+				<div class="modal fade" id="edit-<?php echo $data["id_pesan"]; ?>">
 					<div class="modal-dialog modal-md" role="document">
 					    <div class="modal-content">
 					    	<div class="modal-header">
 					    		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					    		<h4 class="modal-title" ">Input Pesan</h4>
 					    	</div>
-							
-					    	<form>
 					    	<div class="modal-body">
 					    	<input type="hidden" id="<?php echo $data["id_pesan"]; ?>" value="<?php echo $data["id_pesan"]; ?>" >
 						    		<div class="form-group">
@@ -132,10 +134,8 @@ fungsi edit
 						    		</div>
 					    	</div>
 					    	<div class="modal-footer">
-					    		<button class="btn btn-primary text-right" onclick="updateData(<?php echo $data["id_pesan"]?>)">Update</button>
+					    		<button class="btn btn-primary text-right btn-update" id="<?php echo $data["id_pesan"]?>">Update</button>
 					    	</div>
-								</form>		
-
 					    </div>
 				  	</div>
 				</div>

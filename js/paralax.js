@@ -11,3 +11,15 @@ $(window).scroll(function(event) {
 	});
 
 });
+$(window).on('load', function(event) {	
+	event.preventDefault();
+	setTimeout(function(){
+		$(".jumbotron img").addClass('imgtampil');
+	},200);
+	setTimeout(function(){
+		$(".jumbotron h1").addClass('h1tampil');
+	},400*2);
+	setTimeout(function(){
+		$(".jumbotron .text").addClass('muncul');
+	},800*2);
+});

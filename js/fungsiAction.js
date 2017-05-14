@@ -1,3 +1,6 @@
+/*
+@autor : Hari irawan
+ */
 $(document).ready(function(){
 	viewData();
 
@@ -26,6 +29,99 @@ $(document).ready(function(){
 		$("#cari").trigger('reset');
 		viewData();
 	});
+	$(document).on('click', '#simpan', function(event) {
+		event.preventDefault();
+		/* Act on the event */
+		swal({
+		  title: 'Are you sure?',
+		  text: "Anda ingin simpan data ini !",
+		  type: 'info',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Yes, Save it!'
+		}).then(function () {
+		  swal(
+		    'success',
+		    'Data berhasil disimpan !',
+		    'success'
+		  )
+		  simpanData();
+		},function (dismiss) {
+		  if (dismiss === 'cancel') {
+		    swal(
+		      'Cancelled',
+		      'Your imaginary file is safe :)',
+		      'error'
+		    )
+		   }
+		})
+	});
+	$(document).on('click', '.btn-update', function(event) {
+		event.preventDefault();
+		/* Act on the event */
+		var id_pesan = $(this).attr('id');
+		swal({
+		  title: 'Are you sure?',
+		  text: "Kamu ingin update data ini !",
+		  type: 'info',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Yes, Update it!'
+		}).then(function () {
+		  swal(
+		    'success',
+		    'Update Data Berhasil !',
+		    'success'
+		  )
+		  updateData(id_pesan)
+		},function (dismiss) {
+		  if (dismiss === 'cancel') {
+		    swal(
+		      'Cancelled',
+		      'Your imaginary file is safe :)',
+		      'error'
+		    )
+		   }
+		})
+	});
+
+	$(document).on('click', '.btn-hapus', function(event) {
+		event.preventDefault();
+		/* Act on the event */
+		var id_pesan = $(this).attr('id');
+		swal({
+		  title: 'Apakah anda yakin?',
+		  text: "Ingin menghapus data ini!",
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Yes, Delet !',
+		  cancelButtonText: 'No, Cancel!',
+		  confirmButtonClass: 'btn btn-success',
+		  cancelButtonClass: 'btn btn-danger',
+		  buttonsStyling: false
+		}).then(function () {
+		  swal(
+		    'Deleted!',
+		    'Your file has been deleted.',
+		    'success'
+		  )
+			deleteData(id_pesan);
+		}, function (dismiss) {
+		  if (dismiss === 'cancel') {
+		    swal(
+		      'Cancelled',
+		      'Your imaginary file is safe :)',
+		      'error'
+		    )
+		  }
+		})
+	});
+
+
 });
 
 function simpanData(){
@@ -36,15 +132,29 @@ function simpanData(){
 	$.ajax({
 		type: 'POST',
 		url: 'action/pesan.php?page=add',
-		data: {nama : nm, email : em, kategori: kat, pesan : pes}
+		data: {
+			nama : nm,
+			email : em,
+			kategori : kat,
+			pesan : pes,
+		},
+	})
+	.done(function() {
+		$("#crud").modal('hide');
+		$('body').removeClass('modal-open');
+		$('.modal-backdrop').remove();
+		viewData();
+	});
+	
+	/*$.ajax({
+		type: 'POST',
+		url: 'action/pesan.php?page=add',
+		data: 'nama='+nm+'&email='+em+'&kategori='+kat+'&pesan='+pes,
 		//data: 'nama='+nama+'&email='+email+'&kategori='+kategori+'&pesan='+pesan,
-		/*success:function(){
-			viewData();
-		}*/
-	}).done(function(data) {
-    	viewData();
-    	$("#pesan").text("Data Berhasil Diinputkan");
- 	});
+		success:function(){
+			
+		}
+	});*/
 }
 function viewData(page){
 	$.ajax({
@@ -68,7 +178,10 @@ function updateData(id){
 		type: 'POST',
 		url: 'action/pesan.php?page=edit',
 		data: 'nama='+nama+'&email='+email+'&kategori='+kategori+'&pesan='+pesan+'&id='+id_pesan,
-		success:function(data){
+		success:function(){
+			$("#edit").modal('hide');
+			$('body').removeClass('modal-open');
+			$('.modal-backdrop').remove();
 			viewData();
 		}
 	});
@@ -80,9 +193,8 @@ function deleteData(id){
 	$.ajax({
 		type: 'POST',
 		url: 'action/pesan.php?page=del',
-		data: 'id='+id_pesan,
+		data: {id : id_pesan},
 		success:function(){
-			console.log('Data didelete');
 			viewData();
 		}
 	})
