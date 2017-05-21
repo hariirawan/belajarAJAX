@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/sweetalert2.min.css">
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 </head>
 <body >
 <div class="container-fluid">
@@ -26,7 +27,8 @@
 			      </a>
 			    </div>
 			    <ul class="nav navbar-nav navbar-right">
-			        <li><a href="#">Link</a></li>
+			        <li><a href="index.php?menu=about">About</a></li>
+			        <li><a href="index.php?menu=contact">Contact</a></li>
 			        <li class="dropdown">
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 			          <ul class="dropdown-menu">
@@ -110,9 +112,7 @@
 	<div class="contTabel">
 		<div class="table">
 			<div class="row">
-				<div class="col-sm-10 col-sm-offset-1 table-tampil">
-					
-				</div>
+				<?php include_once 'menu.php'; ?>		
 			</div>
 		</div>
 	</div>
@@ -126,10 +126,7 @@
 	</div>
 </div>
 
-
-<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script src="js/sweetalert2.min.js"></script>
-<script src="js/fungsiAction.js"></script>
 <script src="js/paralax.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>

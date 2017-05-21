@@ -3,7 +3,6 @@
  */
 $(document).ready(function(){
 	viewData();
-
 	//Sintax Penjarian pada ajax;
 	$("#cari").keyup(function(event) {
 		var search = $("#cari").val();
@@ -46,6 +45,9 @@ $(document).ready(function(){
 		    'Data berhasil disimpan !',
 		    'success'
 		  )
+			$("#crud").modal('hide');
+			$('body').removeClass('modal-open');
+			$('.modal-backdrop').remove();
 		  simpanData();
 		},function (dismiss) {
 		  if (dismiss === 'cancel') {
@@ -140,21 +142,8 @@ function simpanData(){
 		},
 	})
 	.done(function() {
-		$("#crud").modal('hide');
-		$('body').removeClass('modal-open');
-		$('.modal-backdrop').remove();
 		viewData();
 	});
-	
-	/*$.ajax({
-		type: 'POST',
-		url: 'action/pesan.php?page=add',
-		data: 'nama='+nm+'&email='+em+'&kategori='+kat+'&pesan='+pes,
-		//data: 'nama='+nama+'&email='+email+'&kategori='+kategori+'&pesan='+pesan,
-		success:function(){
-			
-		}
-	});*/
 }
 function viewData(page){
 	$.ajax({
@@ -179,6 +168,7 @@ function updateData(id){
 		url: 'action/pesan.php?page=edit',
 		data: 'nama='+nama+'&email='+email+'&kategori='+kategori+'&pesan='+pesan+'&id='+id_pesan,
 		success:function(){
+			$("#edit").getElemenClass()
 			$("#edit").modal('hide');
 			$('body').removeClass('modal-open');
 			$('.modal-backdrop').remove();
