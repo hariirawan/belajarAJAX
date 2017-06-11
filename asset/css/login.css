@@ -1,0 +1,22 @@
+body{
+	background-color: #FFFFFF;
+	margin-top: 50px;
+
+}
+footer{
+	height: 60px;
+	bottom: 0;
+	background-color: #eee;
+	width: 100%;
+	position: absolute;
+	left: 0;
+
+}
+#hlogin{
+	width: 100px;
+	height: 100px;
+	margin-top: -55px;
+}
+#pesan{
+	font-size: 11px;
+}

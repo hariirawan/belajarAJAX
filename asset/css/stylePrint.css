@@ -1,0 +1,21 @@
+.jumbotron{
+	max-height: 60px;
+	background-color: #00A7DB;
+}
+.jumbotron h3{
+	margin:0;
+	color: #eee;
+}
+.priview{
+	padding-right:0;
+	transform: translate(0, -25px);
+	margin-right: -17px;
+	margin-left: -17px;
+}
+thead {
+	text-align: center;
+}
+thead tr td{
+	font-size: 12px;
+	font-weight: bold;
+}

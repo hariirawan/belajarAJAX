@@ -1,0 +1,59 @@
+body{
+	margin-top: 30px;
+	min-height: 350px;
+}
+@media (min-width: 768px) {
+  .sidebar {
+    z-index: 1;
+    position: absolute;
+    width: 230px;
+    margin-top: 0px;
+    background-color: #eee;
+    bottom: 0;
+    top: 50px;
+	}
+}
+
+.fotoProfil{
+	background-color: #8AD1F9;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-left: -15px;
+	margin-right: -12px;
+
+}
+.sidebar .fotoProfil img{
+	max-width: 130px;
+	height: 130px;
+	border:3px solid #eee;
+	margin:auto;
+}
+.fotoProfil h3, .fotoProfil p{
+	color: #eee;
+}
+.list-sidebar{
+	margin-top: 20px;
+	margin-left: -15px;
+	margin-right: -12px;	
+}
+
+@media (min-width: 768px) {
+  #page-wrapper {
+    position: inherit;
+    margin: 0 0 0 230px;
+    padding: 0 20px;
+    bottom:0;
+    overflow-y: scroll;
+    height: 645px; 
+  }
+}
+#jumKec, #jumDesa, #jumDusun, #jumAbk{
+	font-size: 3em;
+}
+
+.navBar{
+	border-radius: 0;
+	border-color: #337ab7;
+}
